@@ -1,0 +1,452 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css"
+    />
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://static.freshdev.io/fdk/2.0/assets/freshservice.css"
+    />
+    <style>
+      .checkboxes-group {
+        margin-bottom: 40px;
+      }
+
+      .form-control {
+        border: 1px #dadfe3 solid !important;
+        border-bottom: 1px #dadfe3 solid !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding-left: 10px !important;
+        font-size: 13px !important;
+      }
+
+      .btn {
+        background-color: #264966 !important;
+        border-color: #12344d;
+      }
+
+      .star {
+        color: red;
+      }
+
+      .width {
+        width: 900px;
+      }
+
+      .m5t {
+        margin-bottom: -5px;
+      }
+
+      .m15t {
+        margin-bottom: 15px;
+      }
+
+      .m10t {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fdsettings col-sm-8">
+      <div class="form-group" id="apiUrldiv">
+        <label for="url2" class="url3"
+          >Freshservice Domain
+          <span class="star">*</span>
+        </label>
+        <input type="text" id="fdUrl" class="form-control" name="fdUrl" />
+        <span class="insmsg"
+          >Please enter your Freshservice account Domain name
+          Ex:example.freshservice.com</span
+        >
+        <div id="error_url_div" class="star"></div>
+      </div>
+      <div class="form-group" id="apikeydiv">
+        <label for="apikey2" class="apikey3"
+          >Freshservice API Key
+          <span class="star">*</span>
+        </label>
+        <input
+          type="text"
+          id="txtApiKey"
+          class="form-control"
+          name="txtApiKey"
+        />
+        <span class="insmsg">Please enter your Freshservice API Key.</span>
+        <div id="error_div" class="star"></div>
+      </div>
+      <button type="button" class="btn btn-success" id="btnNext">
+        Authenticate
+      </button>
+    </div>
+
+    <div class="settingsPage">
+      <h3>
+        Please select the additional fields you want to be displayed in
+        <i>Detailr</i>
+      </h3>
+      <div class="checkboxes-group more-details-fields">
+        <fieldset>
+          <legend>User Details Fields</legend>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_description" />Background
+            Information<span class="star">*</span>
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_language" /> Language
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_address" /> Address
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_time_zone" /> Time Zone
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_mobile" /> Mobile Number
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_department_names" />
+            Departments/Companies<span class="star">**</span>
+          </label>
+          <div id="customErr" class="star m10t">
+            Please chose atleast one field
+          </div>
+        </fieldset>
+      </div>
+      <div class="m5t form-group" id="contactCustomFields">
+        <label>Choose custom fields</label><br />
+        <select
+          id="multiCustFields"
+          multiple="multiple"
+          class="width form-control select2"
+        ></select>
+      </div>
+      <br />
+      <div class="checkboxes-group account-fields">
+        <fieldset>
+          <legend>Account Fields</legend>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_helpdesk_agent" /> Helpdesk
+            Agent<span class="star">*</span>
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_active" /> Verified User<span
+              class="star"
+              >*</span
+            >
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_deleted" /> Deleted User<span
+              class="star"
+              >*</span
+            >
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_created_at" /> User Creation Time
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_updated_at" /> Contact Updated
+            Time
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_id" /> Contact ID
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_external_id" /> Contact External
+            ID<span class="star">*</span>
+          </label>
+        </fieldset>
+      </div>
+
+      <div class="checkboxes-group default-requester-fields">
+        <fieldset>
+          <legend>
+            Default Requester Fields (Already present in the default ticket
+            details page)
+          </legend>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_name" /> Contact Name
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_job_title" /> Job Title
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_email" /> Email
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_phone" /> Phone Number
+          </label>
+
+          <label class="checkbox-inline">
+            <input type="checkbox" id="contact_location_name" /> Location<span
+              class="star"
+              >**</span
+            >
+          </label>
+        </fieldset>
+      </div>
+      <div>
+        <div>
+          <b>Note: </b>Fields marked with <span class="star"> '*' </span>will
+          not be shown in the New Ticket page (expect for verified agents).
+        </div>
+        <div>
+          <b>Note: </b>Fields marked with <span class="star">'**'</span> will
+          not be shown in Requester/Contact detail page.
+        </div>
+        <div>
+          <b>Note: </b>Address and Departments/Companies fields will not be
+          shown for Agents in New Ticket page.
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var updateConfigs;
+      $("#multiCustFields").select2({
+        closeOnSelect: false,
+      });
+      app.initialized().then(
+        function (client) {
+          window.client = client;
+          $(".settingsPage,#customErr").hide();
+          $("#btnNext").click(function () {
+            $(this).prop("disabled", true);
+            document.getElementById("btnNext").innerHTML = "Authenticating...";
+            $("#error_div,#error_url_div").empty();
+            var fd_url = $("#fdUrl").val();
+            var api_key = $("#txtApiKey").val();
+            if (api_key.length !== 0 && fd_url.length !== 0) {
+              check(fd_url, api_key);
+            } else {
+              validateError(fd_url, api_key);
+            }
+          });
+          $("#contact_custom_field").click(function () {
+            $("#customErr").hide();
+            if ($(this).is(":checked")) {
+              $("#multiCustFields").val(null).trigger("change");
+              $("#contactFields").show();
+            } else {
+              $("#contactFields").hide();
+            }
+          });
+        },
+        function (error) {
+          handleError(error);
+        }
+      );
+
+      function check(fd_url, api_key) {
+        var url = "https://" + fd_url + "/api/v2/tickets?per_page=1&page=1";
+        var headers = {
+          Authorization: "Basic " + btoa(api_key + ":x"),
+          contentType: "application/json",
+        };
+        var options = {
+          headers: headers,
+        };
+        client.request.get(url, options).then(
+          function (data) {
+            getContactFields(fd_url, api_key);
+            $(".settingsPage").show();
+            $(".fdsettings").hide();
+            if (updateConfigs === undefined) {
+              $("#contactFields").hide();
+            }
+            document.getElementById("btnNext").innerHTML = "Authenticated";
+          },
+          function (error) {
+            handleError(error);
+          }
+        );
+      }
+
+      function getContactFields(fd_url, api_key) {
+        var url = "https://" + fd_url + "/api/v2/requester_fields";
+        var headers = {
+          Authorization: "Basic " + btoa(api_key + ":x"),
+          contentType: "application/json",
+        };
+        var options = {
+          headers: headers,
+        };
+        client.request.get(url, options).then(
+          function (field_data) {
+            try {
+              var selectOptions = [];
+              var dataRes = JSON.parse(field_data.response);
+              var requester_fields = dataRes.requester_fields;
+              for (var i = 0; i < requester_fields.length; i++) {
+                if (requester_fields[i].default === false) {
+                  var field_label = requester_fields[i].label;
+                  var field_name = requester_fields[i].name;
+                  selectOptions.push(
+                    `<option value=${field_name}>${field_label}</option>`
+                  );
+                }
+              }
+              $("#multiCustFields").html(selectOptions.join(""));
+              if (updateConfigs !== undefined) {
+                if (updateConfigs.cust_field.length > 0) {
+                  $("#multiCustFields")
+                    .val(updateConfigs.cust_field)
+                    .trigger("change");
+                }
+              }
+            } catch (error) {
+              handleError(error);
+            }
+          },
+          function (error) {
+            handleError(error);
+          }
+        );
+      }
+
+      function postConfigs() {
+        var checkboxes = $("input[type=checkbox]");
+        var fd_domain = $("#fdUrl").val();
+        var api_key = $("#txtApiKey").val();
+        var selected_fields = $("#multiCustFields").select2("data");
+        var optionsArr = $("#multiCustFields").val();
+        var ids = checkboxes
+          .map(function () {
+            return this.id;
+          })
+          .get();
+        var isChecked = checkboxes
+          .map(function () {
+            return $(this).is(":checked");
+          })
+          .get();
+        const obj = ids.reduce((obj, value, index) => {
+          obj[value] = isChecked[index];
+          return obj;
+        }, {});
+        return {
+          __meta: {
+            secure: ["api_key"],
+          },
+          api_key,
+          obj: obj,
+          domain: fd_domain,
+          cust_field: optionsArr,
+        };
+      }
+
+      function getConfigs(configs) {
+        updateConfigs = configs;
+        $("#fdUrl").val(configs.domain);
+        $("#txtApiKey").val(configs.api_key);
+        $.each(configs.obj, function (key, value) {
+          $("#" + key).prop("checked", JSON.parse(value));
+          if (key === "contact_custom_field") {
+            if (value === true) {
+              $("#contactFields").show();
+            } else {
+              $("#contactFields").hide();
+            }
+          }
+        });
+      }
+
+      function validate() {
+        var isValid = true;
+        if (!$(".settingsPage").is(":visible")) {
+          $("#error_url_div").empty();
+          $("#error_div")
+            .empty()
+            .append(
+              "Please click Authenticate button to proceed with installation/updation process."
+            );
+          isValid = false;
+        } else {
+          $("#error_div,#error_url_div").hide();
+          var selected_fields = $("#multiCustFields").select2("data");
+          if (selected_fields.length !== 0) {
+            $("#customErr").hide();
+            isValid = true;
+          } else {
+            $("#customErr").show();
+            $("#contactFields").removeClass(".m5t").addClass(".m15t");
+            isValid = false;
+          }
+        }
+        return isValid;
+      }
+
+      function validateError(fd_url, api_key) {
+        $("#btnNext").prop("disabled", false);
+        document.getElementById("btnNext").innerHTML = "Authenticate";
+        if (api_key.length === 0) {
+          $("#error_div").html("<span>API Key is required.</span>");
+        } else {
+          $("#error_div").empty();
+        }
+        if (fd_url.length === 0) {
+          $("#error_url_div").html("<span>Domain name is required.</span>");
+        } else {
+          $("#error_url_div").empty();
+        }
+      }
+
+      function handleError(e) {
+        $("#btnNext").prop("disabled", false);
+        document.getElementById("btnNext").innerHTML = "Authenticate";
+        var msg = e.response;
+        if (e.status === 0 || e.status === 404) {
+          $("#error_url_div").html(
+            "Invalid Domain entered, please check the field and try again."
+          );
+        } else if (e.status === 400) {
+          $("#error_div").html(
+            "Invalid input entered, please verify the fields and try again."
+          );
+        } else if (e.status === 401 || e.status === 403) {
+          $("#error_div").html(
+            "Invalid credentials were given or subscription to the service expired."
+          );
+        } else if (e.status === 500) {
+          $("#error_div").html(
+            "Unexpected error occurred, please try after sometime."
+          );
+        } else if (e.status === 504) {
+          $("#error_div").html("Timeout error while processing the request.");
+        } else if (e.status === 502) {
+          $("#error_div").html("Error in establishing connection.");
+        } else {
+          $("#error_div").html(msg);
+        }
+      }
+    </script>
+  </body>
+</html>

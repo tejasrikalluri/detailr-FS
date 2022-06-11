@@ -1,0 +1,45 @@
+{
+  "platform-version": "2.2",
+  "product": {
+    "freshservice": {
+      "location": {
+        "ticket_requester_info": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "contact_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        },
+        "new_ticket_sidebar": {
+          "url": "index.html",
+          "icon": "styles/images/icon.svg"
+        }
+      },
+      "functions": {
+        "searchAgent": {
+          "timeout": 10
+        },
+        "searchRequester": {
+          "timeout": 10
+        },
+        "getDepartment": {
+          "timeout": 10
+        },
+        "getLocation": {
+          "timeout": 10
+        }
+      }
+    }
+  },
+  "whitelisted-domains": [
+    "https://*.freshservice.com"
+  ],
+  "dependencies": {
+    "base-64": "0.1.0"
+  },
+  "engines": {
+    "node": "14.17.3",
+    "fdk": "8.3.1"
+  }
+}

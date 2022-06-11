@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <script src="https://static.freshdev.io/fdk/2.0/assets/fresh_client.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+  </head>
+
+  <body>
+    <div class="fw-widget-wrapper">
+      <div id="msg"></div>
+      <div id="load"></div>
+      <div class="star" id="errorDiv">
+        Unexpected error occurred, please try after some time.
+      </div>
+      <div class="content hidden" id="div-empty">
+        <div class="contact-detail">
+          <span title="no-fields-selected"
+            >Please select at least one information to display in the
+            application config page.</span
+          >
+        </div>
+      </div>
+
+      <div class="content" id="div-fields">
+        <div id="div-name" class="contact-detail hidden">
+          <span class="contact-detail-label" title="name">Contact Name</span>
+          <span class="contact-detail-value" id="contact_name">N/A</span>
+        </div>
+
+        <div id="div-job_title" class="contact-detail hidden">
+          <span class="contact-detail-label" title="job_title">Job Title</span>
+          <span class="contact-detail-value" id="contact_job_title">N/A</span>
+        </div>
+
+        <div id="div-description" class="contact-detail hidden">
+          <span class="contact-detail-label" title="description"
+            >Background Information</span
+          >
+          <span class="contact-detail-value" id="contact_description">N/A</span>
+        </div>
+
+        <div id="div-helpdesk_agent" class="contact-detail hidden">
+          <span class="contact-detail-label" title="helpdesk_agent"
+            >Helpdesk Agent</span
+          >
+          <span class="contact-detail-value" id="contact_helpdesk_agent"
+            >N/A</span
+          >
+        </div>
+
+        <div id="div-email" class="contact-detail hidden">
+          <span class="contact-detail-label" title="email">Email</span>
+          <span class="contact-detail-value" id="contact_email">N/A</span>
+        </div>
+
+        <div id="div-department_names" class="contact-detail hidden">
+          <span class="contact-detail-label" title="department_names"
+            >Departments</span
+          >
+          <span class="contact-detail-value" id="contact_department_names"
+            >N/A</span
+          >
+        </div>
+
+        <div id="div-company_names" class="contact-detail hidden">
+          <span class="contact-detail-label" title="company_names"
+            >Companies</span
+          >
+          <span class="contact-detail-value" id="contact_company_names"
+            >N/A</span
+          >
+        </div>
+
+        <div id="div-phone" class="contact-detail hidden">
+          <span class="contact-detail-label" title="phone">Phone Number</span>
+          <span class="contact-detail-value" id="contact_phone">N/A</span>
+        </div>
+
+        <div id="div-mobile" class="contact-detail hidden">
+          <span class="contact-detail-label" title="mobile_phone"
+            >Mobile Number</span
+          >
+          <span class="contact-detail-value" id="contact_mobile">N/A</span>
+        </div>
+
+        <div id="div-address" class="contact-detail hidden">
+          <span class="contact-detail-label" title="address">Address</span>
+          <span class="contact-detail-value" id="contact_address">N/A</span>
+        </div>
+
+        <div id="div-location_name" class="contact-detail hidden">
+          <span class="contact-detail-label" title="location">Location</span>
+          <span class="contact-detail-value" id="contact_location_name"
+            >N/A</span
+          >
+        </div>
+
+        <div id="div-time_zone" class="contact-detail hidden">
+          <span class="contact-detail-label" title="time_zone">Time Zone</span>
+          <span class="contact-detail-value" id="contact_time_zone">N/A</span>
+        </div>
+
+        <div id="div-language" class="contact-detail hidden">
+          <span class="contact-detail-label" title="language">Language</span>
+          <span class="contact-detail-value" id="contact_language">N/A</span>
+        </div>
+
+        <div id="div-created_at" class="contact-detail hidden">
+          <span class="contact-detail-label" title="created_at"
+            >User Creation Time</span
+          >
+          <span class="contact-detail-value" id="contact_created_at">N/A</span>
+        </div>
+
+        <div id="div-updated_at" class="contact-detail hidden">
+          <span class="contact-detail-label" title="updated_at"
+            >Contact Updated Time</span
+          >
+          <span class="contact-detail-value" id="contact_updated_at">N/A</span>
+        </div>
+
+        <div id="div-active" class="contact-detail hidden">
+          <span class="contact-detail-label" title="active_user"
+            >Verified User</span
+          >
+          <span class="contact-detail-value" id="contact_active">N/A</span>
+        </div>
+
+        <div id="div-deleted" class="contact-detail hidden">
+          <span class="contact-detail-label" title="deleted_user"
+            >Deleted User</span
+          >
+          <span class="contact-detail-value" id="contact_deleted">N/A</span>
+        </div>
+
+        <div id="div-id" class="contact-detail hidden">
+          <span class="contact-detail-label" title="contact_id"
+            >Contact ID</span
+          >
+          <span class="contact-detail-value" id="contact_id">N/A</span>
+        </div>
+
+        <div id="div-external_id" class="contact-detail hidden">
+          <span class="contact-detail-label" title="external_id"
+            >Contact External ID</span
+          >
+          <span class="contact-detail-value" id="contact_external_id">N/A</span>
+        </div>
+
+        <div id="div-custom_field" class="contact-detail hidden">
+          <span
+            class="contact-detail-label contact-detail-label1"
+            title="custom_fields"
+            >Custom Fields</span
+          >
+          <span class="contact-detail-value" id="contact_custom_field"
+            >N/A</span
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/utils.js"></script>
+</html>

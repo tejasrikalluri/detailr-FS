@@ -1,0 +1,34 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*::before {
+  box-sizing: inherit;
+}
+
+.app-body {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Helvetica, sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+img {
+  max-width: 50px;
+}
+.contact-detail-label {
+  color: red !important;
+}
+.contact-detail-value {
+  color: green !important;
+}
+
+.contact-detail-label1 {
+  font-weight: bold !important;
+  color: rebeccapurple !important;
+}
