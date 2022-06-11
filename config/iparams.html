@@ -356,17 +356,17 @@
           __meta: {
             secure: ["api_key"],
           },
-          api_key,
+          api_key: btoa(api_key),
           obj: obj,
-          domain: fd_domain,
-          cust_field: optionsArr,
+          domain: btoa(fd_domain),
+          cust_field: optionsArr
         };
       }
 
       function getConfigs(configs) {
         updateConfigs = configs;
-        $("#fdUrl").val(configs.domain);
-        $("#txtApiKey").val(configs.api_key);
+        $("#fdUrl").val(atob(configs.domain));
+        $("#txtApiKey").val(atob(configs.api_key));
         $.each(configs.obj, function (key, value) {
           $("#" + key).prop("checked", JSON.parse(value));
           if (key === "contact_custom_field") {

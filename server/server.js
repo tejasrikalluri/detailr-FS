@@ -1,9 +1,9 @@
 var base64 = require("base-64");
+const domain = base64.decode(args.iparams.domain);
+const apiKey = base64.decode(args.iparams.api_key);
 
 exports = {
   searchAgent: function (args) {
-    var domain = args.iparams.domain;
-    var apiKey = args.iparams.api_key;
     var email = base64.decode(args.email);
     var url = "https://" + domain + "/api/v2/agents?email=" + email;
     var headers = {
@@ -34,8 +34,6 @@ exports = {
     );
   },
   searchRequester: function (args) {
-    var domain = args.iparams.domain;
-    var apiKey = args.iparams.api_key;
     var email = base64.decode(args.email);
     var url = "https://" + domain + "/api/v2/requesters?email=" + email;
     var headers = {
@@ -66,8 +64,6 @@ exports = {
     );
   },
   getDepartment: function (args) {
-    var domain = args.iparams.domain;
-    var apiKey = args.iparams.api_key;
     var id = base64.decode(args.id);
     var url = "https://" + domain + "/api/v2/departments/" + id;
     var headers = {
@@ -93,8 +89,6 @@ exports = {
     );
   },
   getLocation: function (args) {
-    var domain = args.iparams.domain;
-    var apiKey = args.iparams.api_key;
     var id = base64.decode(args.id);
     var url = "https://" + domain + "/api/v2/locations/" + id;
     var headers = {
@@ -123,8 +117,6 @@ exports = {
 
 function getContactCustomFieldsLabel(args, result) {
   var requiredData = {};
-  var domain = args.iparams.domain;
-  var apiKey = args.iparams.api_key;
   var personDetails = result[0];
   var url = "https://" + domain + "/api/v2/requester_fields";
   var headers = {

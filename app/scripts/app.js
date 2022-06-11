@@ -4,7 +4,7 @@ function displayErr(error, client) {
   $("#msg").html("");
   client.interface.trigger("showNotify", {
     type: "error",
-    message: "Error: " + message,
+    message: "Error: " + message
   });
 }
 var formatRequesterData = function (requesterData, cust_field, callback) {
@@ -57,7 +57,7 @@ function setValues(configParams, requesterData, newFlag, cust_field) {
     }
     if (
       configParams[
-        paramsPrefix + (key === "company_names" ? "department_names" : key)
+      paramsPrefix + (key === "company_names" ? "department_names" : key)
       ] === true
     ) {
       $("#div-" + key).removeClass("hidden");
@@ -118,7 +118,7 @@ $(document).ready(function () {
             var req_data = data.requester;
             let email = req_data.email;
             var options = {
-              email: btoa(email),
+              email: btoa(email)
             };
             client.request.invoke("searchRequester", options).then(
               function (data) {
@@ -165,7 +165,7 @@ $(document).ready(function () {
       };
       var getReqDetail = function (email, callback) {
         var options = {
-          email: btoa(email),
+          email: btoa(email)
         };
         client.request.invoke("searchRequester", options).then(
           function (data) {
@@ -187,7 +187,7 @@ $(document).ready(function () {
       };
       var getAgentDetail = function (email, callback) {
         let options = {
-          email: btoa(email),
+          email: btoa(email)
         };
         client.request.invoke("searchAgent", options).then(
           function (data) {
@@ -209,7 +209,7 @@ $(document).ready(function () {
       };
       var getLocation = function (val, callback) {
         var options = {
-          id: btoa(val),
+          id: btoa(val)
         };
         client.request.invoke("getLocation", options).then(
           function (data) {
