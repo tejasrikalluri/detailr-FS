@@ -8,10 +8,10 @@ exports = {
     var url = "https://" + domain + "/api/v2/agents?email=" + email;
     var headers = {
       Authorization: "Basic " + base64.encode(apiKey + ":X"),
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     };
     var reqData = {
-      headers: headers,
+      headers: headers
     };
     $request.get(url, reqData).then(
       function (data) {
@@ -20,15 +20,15 @@ exports = {
           let requiredData = {};
           requiredData["result"] = undefined;
           renderData(null, {
-            finalResult: requiredData,
+            finalResult: requiredData
           });
         } else {
-          getContactCustomFieldsLabel(args, result);
+          getContactCustomFieldsLabel(result);
         }
       },
       function () {
         renderData(null, {
-          finalResult: null,
+          finalResult: null
         });
       }
     );
@@ -38,10 +38,10 @@ exports = {
     var url = "https://" + domain + "/api/v2/requesters?email=" + email;
     var headers = {
       Authorization: "Basic " + base64.encode(apiKey + ":X"),
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     };
     var reqData = {
-      headers: headers,
+      headers: headers
     };
     $request.get(url, reqData).then(
       function (data) {
@@ -50,15 +50,15 @@ exports = {
           let requiredData = {};
           requiredData["result"] = undefined;
           renderData(null, {
-            finalResult: requiredData,
+            finalResult: requiredData
           });
         } else {
-          getContactCustomFieldsLabel(args, result);
+          getContactCustomFieldsLabel(result);
         }
       },
       function () {
         renderData(null, {
-          finalResult: null,
+          finalResult: null
         });
       }
     );
@@ -68,22 +68,22 @@ exports = {
     var url = "https://" + domain + "/api/v2/departments/" + id;
     var headers = {
       Authorization: "Basic " + base64.encode(apiKey + ":X"),
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     };
     var reqData = {
-      headers: headers,
+      headers: headers
     };
     $request.get(url, reqData).then(
       function (data) {
         var result = JSON.parse(data.response);
         var name = result.department.name;
         renderData(null, {
-          result: name,
+          result: name
         });
       },
       function () {
         renderData(null, {
-          finalResult: null,
+          finalResult: null
         });
       }
     );
@@ -93,38 +93,38 @@ exports = {
     var url = "https://" + domain + "/api/v2/locations/" + id;
     var headers = {
       Authorization: "Basic " + base64.encode(apiKey + ":X"),
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     };
     var reqData = {
-      headers: headers,
+      headers: headers
     };
     $request.get(url, reqData).then(
       function (data) {
         var result = JSON.parse(data.response);
         var name = result.location.name;
         renderData(null, {
-          result: name,
+          result: name
         });
       },
       function () {
         renderData(null, {
-          finalResult: null,
+          finalResult: null
         });
       }
     );
   },
 };
 
-function getContactCustomFieldsLabel(args, result) {
+function getContactCustomFieldsLabel(result) {
   var requiredData = {};
   var personDetails = result[0];
   var url = "https://" + domain + "/api/v2/requester_fields";
   var headers = {
     Authorization: "Basic " + base64.encode(apiKey + ":X"),
-    "Content-Type": "application/json",
+    "Content-Type": "application/json"
   };
   var reqData = {
-    headers: headers,
+    headers: headers
   };
   $request.get(url, reqData).then(
     function (data) {
@@ -147,12 +147,12 @@ function getContactCustomFieldsLabel(args, result) {
       requiredData["result"] = personDetails;
       requiredData["labelValueObj"] = labelValueObj;
       renderData(null, {
-        finalResult: requiredData,
+        finalResult: requiredData
       });
     },
     function () {
       renderData(null, {
-        finalResult: null,
+        finalResult: null
       });
     }
   );

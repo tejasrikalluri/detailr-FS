@@ -17,7 +17,6 @@ function formatArrayString(val) {
 
 function formatDate(val) {
   return moment(val).format("MMM Do YYYY");
-  // return val;
 }
 
 //formats custom fields
