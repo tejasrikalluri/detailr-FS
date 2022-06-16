@@ -47,6 +47,10 @@
     .m10t {
       margin-top: 10px;
     }
+
+    input[type=text] {
+      margin-bottom: 1%;
+    }
   </style>
 </head>
 
@@ -57,16 +61,16 @@
         <span class="star">*</span>
       </label>
       <input type="text" id="fdUrl" class="form-control" name="fdUrl" />
-      <span class="insmsg">Please enter your Freshservice account Domain name
+      <span class="insmsg">Please enter your freshservice account domain name
         Ex:example.freshservice.com</span>
       <div id="error_url_div" class="star"></div>
     </div>
     <div class="form-group" id="apikeydiv">
-      <label for="apikey2" class="apikey3">Freshservice API Key
+      <label for="apikey2" class="apikey3">Freshservice API key
         <span class="star">*</span>
       </label>
       <input type="text" id="txtApiKey" class="form-control" name="txtApiKey" />
-      <span class="insmsg">Please enter your Freshservice API Key.</span>
+      <span class="insmsg">Please enter your freshservice API key.</span>
       <div id="error_div" class="star"></div>
     </div>
     <button type="button" class="btn btn-success" id="btnNext">
@@ -108,13 +112,13 @@
           <input type="checkbox" id="contact_department_names" />
           Departments/Companies<span class="star">**</span>
         </label>
-        <div id="customErr" class="star m10t">
-          Please chose atleast one field
-        </div>
       </fieldset>
     </div>
+    <div id="customErr" class="star m10t">
+      Please chose atleast one field
+    </div>
     <div class="m5t form-group" id="contactCustomFields">
-      <label>Choose custom fields</label><br />
+      <label>Choose custom fields<span class="star">*</span></label><br />
       <select id="multiCustFields" multiple="multiple" class="width form-control select2"></select>
     </div>
     <br />
@@ -136,11 +140,11 @@
         </label>
 
         <label class="checkbox-inline">
-          <input type="checkbox" id="contact_created_at" /> User Creation time
+          <input type="checkbox" id="contact_created_at" /> User creation time
         </label>
 
         <label class="checkbox-inline">
-          <input type="checkbox" id="contact_updated_at" /> Contact Updated
+          <input type="checkbox" id="contact_updated_at" /> Contact updated
           time
         </label>
 
@@ -193,7 +197,7 @@
         not be shown in requester/contact detail page.
       </div>
       <div>
-        <b>Note: </b>Address and Departments/Companies fields will not be
+        <b>Note: </b>Address and departments/companies fields will not be
         shown for agents in new ticket page.
       </div>
     </div>
