@@ -21,14 +21,14 @@ html {
 img {
   max-width: 50px;
 }
+
 .contact-detail-label {
-  color: red !important;
-}
-.contact-detail-value {
-  color: green !important;
+  color: #475867;
+  margin-right: 2%;
 }
 
 .contact-detail-label1 {
   font-weight: bold !important;
-  color: rebeccapurple !important;
+  color: #475867;
+  margin-right: 2%;
 }

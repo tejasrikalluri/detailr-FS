@@ -114,9 +114,6 @@
         </label>
       </fieldset>
     </div>
-    <div id="customErr" class="star m10t">
-      Please chose atleast one field
-    </div>
     <div class="m5t form-group" id="contactCustomFields">
       <label>Choose custom fields<span class="star">*</span></label><br />
       <select id="multiCustFields" multiple="multiple" class="width form-control select2"></select>
@@ -187,6 +184,9 @@
         </label>
       </fieldset>
     </div>
+    <div id="customErr" class="star m10t">
+      Please chose atleast one field
+    </div>
     <div>
       <div>
         <b>Note: </b>Fields marked with <span class="star"> '*' </span>will
@@ -223,7 +223,8 @@
             validateError(fd_url, api_key);
           }
         });
-        $("#contact_custom_field").click(function () {
+        $("select,input[type=checkbox]").change(function () {
+          console.log("chnaged")
           $("#customErr").hide();
           if ($(this).is(":checked")) {
             $("#multiCustFields").val(null).trigger("change");
@@ -286,6 +287,12 @@
                   `<option value=${field_name}>${field_label}</option>`
                 );
               }
+              //remove
+              if (requester_fields[i].default) {
+                var field_label = requester_fields[i].label;
+                var field_name = requester_fields[i].name;
+                console.log(field_label, field_name)
+              }
             }
             $("#multiCustFields").html(selectOptions.join(""));
             if (updateConfigs !== undefined) {
@@ -337,6 +344,7 @@
     }
 
     function getConfigs(configs) {
+      console.log(configs)
       updateConfigs = configs;
       $("#fdUrl").val(atob(configs.domain));
       $("#txtApiKey").val(atob(configs.api_key));
@@ -363,9 +371,23 @@
           );
         isValid = false;
       } else {
+        var isChecked = $("input[type=checkbox]")
+          .map(function () {
+            return $(this).is(":checked");
+          })
+          .get();
+        var ids = $("input[type=checkbox]")
+          .map(function () {
+            return this.id;
+          })
+          .get();
+        const obj = ids.reduce((obj, value, index) => {
+          obj[value] = isChecked[index];
+          return obj;
+        }, {});
         $("#error_div,#error_url_div").hide();
         var selected_fields = $("#multiCustFields").select2("data");
-        if (selected_fields.length !== 0) {
+        if (selected_fields.length || !Object.values(obj).every(o => !o)) {
           $("#customErr").hide();
           isValid = true;
         } else {

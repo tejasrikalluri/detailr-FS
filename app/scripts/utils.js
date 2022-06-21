@@ -24,24 +24,15 @@ function formatCustomFields(values, cust_field, custArr) {
   for (let i = 0; i < cust_field.length; i++) {
     let key = cust_field[i];
     let val;
-    if (
-      values[key] != undefined &&
-      values[key] != null &&
-      values[key] != "" &&
-      values[key] != " "
-    ) {
-      val = values[key];
-    } else {
-      val = "N/A";
-    }
+    (values[key] && values[key] != " ") ? val = values[key] : val = "N/A";
     custArr.push(
-      '<div><span class="muted ucwords" style="color:red !important">' +
-        key.replace("_", " ") +
-        "</span>",
+      '<div><span class="muted ucwords" style="color:#475867;margin-right: 2%;">' +
+      key.replace("_", " ") +
+      "</span>",
       ": ",
-      '<span class="muted ucwords" style="color:green !important">' +
-        xss_test(val) +
-        "</span>",
+      '<span class="muted ucwords">' +
+      xss_test(val) +
+      "</span>",
       "<br/></div>"
     );
   }
