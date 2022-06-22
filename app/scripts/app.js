@@ -40,23 +40,27 @@ function setValues(configParams, requesterData, cust_field) {
   //   showContent(configParams);
   // }
   $("#msg,#load").empty();
-  showContent(configParams);
+  showContent(configParams, cust_field);
   // let numberOfFieldsDisplayed = 0;
   let paramsPrefix = "contact_";
   let custArr = [];
-  console.log(configParams)
+  // console.log(configParams)
   $.each(requesterData.result, function (key, val) {
     if (key == "custom_fields") {
       var newValue = formatCustomFields(requesterData.result.custom_fields, cust_field, custArr);
       $("#contact_custom_field").html(newValue);
     }
-    console.log(configParams[paramsPrefix + key], key)
+    // console.log(configParams[paramsPrefix + key], key,)
     if (configParams[paramsPrefix + (key === "company_names" ? "department_names" : key)]) {
       if (isValNotEmpty(val)) {
+        console.log($("#div-" + key).text(), $("#div-" + key), "#" + paramsPrefix + key)
         $("#" + paramsPrefix + key).html(val);
         $("#div-" + key).removeClass("hidden");
       }
-      numberOfFieldsDisplayed++;
+      // numberOfFieldsDisplayed++;
+    } else {
+      console.log("#div-" + key)
+      $("#div-" + key).addClass("hidden");
     }
   });
   // if (numberOfFieldsDisplayed === 0) {
@@ -245,9 +249,10 @@ var getAppLocation = function (callback) {
     displayErr("Unexpected error occurred, please try after some time.", client);
   });
 };
-const showContent = function (configParams) {
+const showContent = function (configParams, cust_field) {
   if (checkselectedFields(configParams)) $(".default-content").show();
-  $(".custom-content").show();
+  if (cust_field.length)
+    $(".custom-content").show();
 }
 function checkselectedFields(configParams) {
   return (Object.values(configParams).indexOf(true) > -1) ? true : false;

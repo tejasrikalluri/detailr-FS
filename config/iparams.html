@@ -226,12 +226,12 @@
         $("select,input[type=checkbox]").change(function () {
           console.log("chnaged")
           $("#customErr").hide();
-          if ($(this).is(":checked")) {
+          /* if ($(this).is(":checked")) {
             $("#multiCustFields").val(null).trigger("change");
             $("#contactFields").show();
           } else {
             $("#contactFields").hide();
-          }
+          } */
         });
       },
       function (error) {
