@@ -224,7 +224,6 @@
           }
         });
         $("select,input[type=checkbox]").change(function () {
-          console.log("chnaged")
           $("#customErr").hide();
           /* if ($(this).is(":checked")) {
             $("#multiCustFields").val(null).trigger("change");
@@ -286,12 +285,6 @@
                 selectOptions.push(
                   `<option value=${field_name}>${field_label}</option>`
                 );
-              }
-              //remove
-              if (requester_fields[i].default) {
-                var field_label = requester_fields[i].label;
-                var field_name = requester_fields[i].name;
-                console.log(field_label, field_name)
               }
             }
             $("#multiCustFields").html(selectOptions.join(""));

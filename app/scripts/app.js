@@ -46,10 +46,7 @@ function setValues(configParams, requesterData, cust_field) {
   let custArr = [];
   // console.log(configParams)
   $.each(requesterData.result, function (key, val) {
-    if (key == "custom_fields") {
-      var newValue = formatCustomFields(requesterData.result.custom_fields, cust_field, custArr);
-      $("#contact_custom_field").html(newValue);
-    }
+
     // console.log(configParams[paramsPrefix + key], key,)
     if (configParams[paramsPrefix + (key === "company_names" ? "department_names" : key)]) {
       if (isValNotEmpty(val)) {
@@ -58,9 +55,12 @@ function setValues(configParams, requesterData, cust_field) {
         $("#div-" + key).removeClass("hidden");
       }
       // numberOfFieldsDisplayed++;
-    } else {
-      console.log("#div-" + key)
-      $("#div-" + key).addClass("hidden");
+    }
+    if (key == "custom_fields") {
+      var newValue = formatCustomFields(requesterData.result.custom_fields, cust_field, custArr);
+      console.log(newValue)
+      $("#contact_custom_field").html(newValue);
+      $("#div-custom_field").removeClass('hidden');
     }
   });
   // if (numberOfFieldsDisplayed === 0) {
@@ -251,6 +251,7 @@ var getAppLocation = function (callback) {
 };
 const showContent = function (configParams, cust_field) {
   if (checkselectedFields(configParams)) $(".default-content").show();
+  console.log(cust_field)
   if (cust_field.length)
     $(".custom-content").show();
 }
