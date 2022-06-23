@@ -44,13 +44,9 @@ function setValues(configParams, requesterData, cust_field) {
   // let numberOfFieldsDisplayed = 0;
   let paramsPrefix = "contact_";
   let custArr = [];
-  // console.log(configParams)
   $.each(requesterData.result, function (key, val) {
-
-    // console.log(configParams[paramsPrefix + key], key,)
     if (configParams[paramsPrefix + (key === "company_names" ? "department_names" : key)]) {
       if (isValNotEmpty(val)) {
-        console.log($("#div-" + key).text(), $("#div-" + key), "#" + paramsPrefix + key)
         $("#" + paramsPrefix + key).html(val);
         $("#div-" + key).removeClass("hidden");
       }
@@ -58,7 +54,6 @@ function setValues(configParams, requesterData, cust_field) {
     }
     if (key == "custom_fields") {
       var newValue = formatCustomFields(requesterData.result.custom_fields, cust_field, custArr);
-      console.log(newValue)
       $("#contact_custom_field").html(newValue);
       $("#div-custom_field").removeClass('hidden');
     }
@@ -251,7 +246,6 @@ var getAppLocation = function (callback) {
 };
 const showContent = function (configParams, cust_field) {
   if (checkselectedFields(configParams)) $(".default-content").show();
-  console.log(cust_field)
   if (cust_field.length)
     $(".custom-content").show();
 }
@@ -365,7 +359,6 @@ $(document).ready(function () {
     client.events.on("app.activated", function () {
       $("#msg").html("Loading, please wait...");
       $(".default-content,.custom-content").hide();
-      console.log("Activated")
       getConfigurationParams(function (error, data) {
         if (error) {
           displayErr("Unexpected error occurred, please try after some time.", client);
