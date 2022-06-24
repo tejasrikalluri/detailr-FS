@@ -44,11 +44,15 @@ function setValues(configParams, requesterData, cust_field) {
   // let numberOfFieldsDisplayed = 0;
   let paramsPrefix = "contact_";
   let custArr = [];
+  // console.log(configParams)
+  console.log(requesterData.result)
   $.each(requesterData.result, function (key, val) {
+    console.log(configParams[paramsPrefix + key], key, paramsPrefix + key, val)
     if (configParams[paramsPrefix + (key === "company_names" ? "department_names" : key)]) {
+      $("#div-" + key).removeClass("hidden");
       if (isValNotEmpty(val)) {
         $("#" + paramsPrefix + key).html(val);
-        $("#div-" + key).removeClass("hidden");
+        // $("#div-" + key).removeClass("hidden");
       }
       // numberOfFieldsDisplayed++;
     }

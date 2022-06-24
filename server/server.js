@@ -142,9 +142,7 @@ function getContactCustomFieldsLabel(result, args) {
         if (result[i].default === false) {
           let contactFieldVal = personDetails.custom_fields[result[i].name];
           if (
-            contactFieldVal !== null &&
-            contactFieldVal !== undefined &&
-            contactFieldVal !== ""
+            contactFieldVal
           ) {
             labelValueObj[result[i].label] = contactFieldVal;
           } else {
