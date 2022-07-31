@@ -34,4 +34,4 @@ Detailr lets you access requesters' details on the Freshservice's portal.
 
 Explore [more of app sample apps](https://community.developers.freshworks.com/t/freshworks-sample-apps/3604) on the Freshworks github respository.
 
-Note: In this version added custom selected custom fields in settings page.
+Note: In this version added a field to choose custom fields in settings page which diplay in app widget.
