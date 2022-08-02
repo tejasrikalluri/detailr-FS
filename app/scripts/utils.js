@@ -25,9 +25,10 @@ function formatCustomFields(values, cust_field, custArr) {
     let key = cust_field[i];
     let val;
     (values[key] && values[key] != " ") ? val = values[key] : val = "N/A";
+    console.log(key, key.replace(/\_/g, " "), key.replace(/\_/g, " ").slice(1))
     custArr.push(
       '<div><span class="muted ucwords" style="color:#475867;margin-right: 2%;">' +
-      key.replace("_", " ").charAt(0).toUpperCase() + key.slice(1) +
+      key.replace(/\_/g, " ").charAt(0).toUpperCase() + key.replace(/\_/g, " ").slice(1) +
       "</span>",
       ": ",
       '<span class="muted ucwords">' +

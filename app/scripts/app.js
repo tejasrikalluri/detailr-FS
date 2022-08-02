@@ -44,10 +44,7 @@ function setValues(configParams, requesterData, cust_field) {
   // let numberOfFieldsDisplayed = 0;
   let paramsPrefix = "contact_";
   let custArr = [];
-  // console.log(configParams)
-  console.log(requesterData.result)
   $.each(requesterData.result, function (key, val) {
-    console.log(configParams[paramsPrefix + key], key, paramsPrefix + key, val)
     if (configParams[paramsPrefix + (key === "company_names" ? "department_names" : key)]) {
       $("#div-" + key).removeClass("hidden");
       if (isValNotEmpty(val)) {
@@ -108,9 +105,7 @@ function showData_newTicketPage(location, configParams, cust_field) {
       $("#contact_job_title").html("N/A");
       $("#msg").html("Loading, please wait...");
       $(".default-content,.custom-content").hide();
-      console.log("Changed event hitted")
       getReqDetail(req_email, function (reqdata) {
-        console.log(reqdata.result)
         if (reqdata.result !== undefined) {
           $("#div-department_names,#div-company_names,#div-address").show();
           displayFields(configParams, reqdata, cust_field);
@@ -261,12 +256,10 @@ function checkselectedFields(configParams) {
 
 function displayFields(configParams, reqData, cust_field) {
   showContent(configParams, cust_field);
-  console.log($(".custom-content"));
   $("#msg,#load").empty();
   var paramsPrefix = "contact_";
   let custArr = [];
   $.each(reqData.result, function (key, val) {
-    console.log
     if (configParams[paramsPrefix + key])
       showDefault(paramsPrefix, key, val);
     showName(key, configParams, val);
@@ -333,7 +326,6 @@ function showCustFields(val, cust_field, custArr) {
   $("#div-custom_field").removeClass('hidden');
   custArr = [];
   var newValue = formatCustomFields(val, cust_field, custArr);
-  console.log(newValue)
   $("#contact_custom_field").html(newValue);
 }
 
